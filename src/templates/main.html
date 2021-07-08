@@ -1,0 +1,31 @@
+
+<html>
+    <head>
+        <title>
+            Hello Flask
+        </title>
+    </head>
+    <body>
+        <input name="name" type="text" />
+        <button id="btnAdd" type="button" class="btn btn-info">Add</button>
+    </body>
+</html>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+    $('#btnAdd').on('click',function() {
+        var name = $("input[name=name]").val();
+        $.ajax({
+            url: "/addName",
+            type: "POST",
+            data: {
+                "name": name
+            } ,
+            success: function (response) {
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    });
+</script>
